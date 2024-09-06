@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spin the Wheel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b9ccc1;
+            text-align: center;
+            padding: 50px;
+        }
+        .wheel-container {
+            position: relative;
+            margin: 0 auto;
+            width: 350px;
+            height: 350px;
+        }
+        #wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid #263238a8;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            background: radial-gradient(circle, #f8f9fa, #e9ecef);
+            position: relative;
+        }
+        .arrow {
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 40px solid #692d2882;
+            position: absolute;
+            top: -10px; /* Position the arrow above the wheel */
+            left: 52%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .arrow::before {
+            position: absolute;
+            top: -24px;
+            left: -23px;
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-top: 25px solid rgba(0, 0, 0, 0.3);
+            transform: translateX(-10%) rotate(360deg);
+        }
+        .wheel-stand {
+            position: absolute;
+            bottom: -40px; /* Position the stand below the wheel */
+            left: 51%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 30px;
+            background: linear-gradient(145deg, #555, #333);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            overflow: hidden; /* Ensure the reflection effect stays within bounds */
+        }
+        .wheel-stand::before {
+            content: '';
+            position: absolute;
+            bottom: -15px; /* Adjust as needed for spacing */
+            left: 50%;
+            transform: translateX(-50%) scaleY(-1); /* Flip vertically */
+            width: 120px;
+            height: 30px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+            border-radius: 15px;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2); /* Shadow to simulate reflection */
+            z-index: -1; /* Ensure it's behind the stand */
+        }
+        #spin-btn {
+            position: absolute;
+            top: 50%;
+            left: 51%;
+            transform: translate(-50%, -50%);
+            padding: 11px 24px;
+            font-size: 13px;
+            background-color: #5d4037;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        #spin-btn:hover {
+            background-color: #3d312f;
+        }
+        #respin-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        #respin-btn:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .spins-left {
+            margin-top: 60px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #555;
+        }
+        .cta-buttons {
+            margin-top: 20px;
+        }
+        .cta-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+        }
+        .cta-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Spin the Wheel</h1>
+    <div class="wheel-container">
+        <canvas id="wheel" width="350" height="350"></canvas>
+        <div class="arrow"></div> 
+        <div class="wheel-stand"></div> 
+        <button id="spin-btn">SPIN</button> 
+    </div>
+    <div class="spins-left" id="spins-left">Spins Left: 4</div> 
+    <div class="result" id="result">Click Spin to start!</div>
+    <button id="respin-btn" class="cta-btn">RESPIN</button>
+    <button id="continue-shopping-btn" class="cta-btn">Continue Shopping</button>
+
+    <script src="wheel.js"></script>
+
+</body>
+</html>
